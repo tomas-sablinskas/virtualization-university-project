@@ -1,0 +1,13 @@
+---
+ - hosts: clients
+   tasks:
+   - name: Install Google Chrome Browser
+     win_chocolatey: name=googlechrome
+   - name: Install FTP client
+     win_chocolatey: name=filezilla
+   - name: Install DBVS
+     win_chocolatey: name=pgadmin3
+   - name: Create user
+     win_user: name=client password="T3stpass" groups=Users
+
+

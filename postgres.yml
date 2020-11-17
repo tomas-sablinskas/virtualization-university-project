@@ -1,0 +1,13 @@
+---
+- hosts: databases
+  tasks:
+  - name: Install Postgres
+    apt: name=postgresql
+  - name: Create database
+    become: true
+    become_user: postgres
+    postgresql_db: name=database
+  - name: Create DB User
+    become: true
+    become_user: postgres
+    postgresql_user: db=database name=testuser password="testpass"

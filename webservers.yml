@@ -1,0 +1,18 @@
+---
+ - hosts: webservers
+   tasks:
+   - name: Install NGINX
+     apt: name=nginx
+   - name: Start nginx
+     service: name=nginx state=started enabled=yes
+   - name: Install PHP
+     apt: name=php5-fpm
+   - name: Start PHP
+     service: name=php5-fpm state=started enabled=yes     
+   - name: Install unzip
+     apt: name=unzip
+   - name: Create direction for joomla
+     file: path=/var/www/www.example.com/web state=directory
+   - name: Unzip joomla
+     unarchive: copy=yes src=/root/my_ansible/joomla_3-6-4-stable-full_package-zip?format=zip dest=/var/www/www.example.com/web
+
